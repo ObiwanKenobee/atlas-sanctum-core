@@ -13,12 +13,40 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
+        "border-strong": "hsl(var(--border-strong))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          elevated: "hsl(var(--surface-elevated))",
+          overlay: "hsl(var(--surface-overlay))",
+        },
+        truth: {
+          DEFAULT: "hsl(var(--truth))",
+          foreground: "hsl(var(--truth-foreground))",
+          muted: "hsl(var(--truth-muted))",
+        },
+        review: {
+          DEFAULT: "hsl(var(--review))",
+          foreground: "hsl(var(--review-foreground))",
+          muted: "hsl(var(--review-muted))",
+        },
+        violation: {
+          DEFAULT: "hsl(var(--violation))",
+          muted: "hsl(var(--violation-muted))",
+        },
+        capital: {
+          DEFAULT: "hsl(var(--capital))",
+          muted: "hsl(var(--capital-muted))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
