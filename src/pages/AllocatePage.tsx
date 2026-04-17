@@ -21,10 +21,9 @@ const AllocatePage = () => {
   const [doctrine, setDoctrine] = useState({ truth: false, regen: false, viable: false });
 
   const doctrinePassed = useMemo(() => {
-    if (!asset) return false;
-    const meetsTruth = asset.truthScore >= 70;
-    const meetsRegen = asset.impactScore >= 60 && asset.status !== "rejected";
-    const meetsViable = asset.truth.confidence >= 70;
+    const meetsTruth = !!asset && asset.truthScore >= 70;
+    const meetsRegen = !!asset && asset.impactScore >= 60 && asset.status !== "rejected";
+    const meetsViable = !!asset && asset.truth.confidence >= 70;
     return {
       meetsTruth, meetsRegen, meetsViable,
       all: meetsTruth && meetsRegen && meetsViable && doctrine.truth && doctrine.regen && doctrine.viable,
