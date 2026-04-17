@@ -5,6 +5,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import AssetPage from "./pages/AssetPage.tsx";
+import AllocatePage from "./pages/AllocatePage.tsx";
+import ValidatePage from "./pages/ValidatePage.tsx";
+import PortfolioPage from "./pages/PortfolioPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +20,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/asset/:id" element={<AssetPage />} />
+          <Route path="/allocate/:id" element={<AllocatePage />} />
+          <Route path="/validate" element={<ValidatePage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
