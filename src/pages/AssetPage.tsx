@@ -4,7 +4,8 @@ import { StatusBadge } from "@/components/atlas/StatusBadge";
 import { useAsset } from "@/lib/atlas/hooks";
 import { fmtPct, fmtUSD } from "@/lib/atlas/format";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, AlertTriangle } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { ChallengeAssetDialog } from "@/components/atlas/ChallengeAssetDialog";
 
 const AssetPage = () => {
   const { id } = useParams();
@@ -171,9 +172,7 @@ const AssetPage = () => {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button className="px-3 py-2 text-[12px] rounded-sm border border-border-strong text-muted-foreground hover:text-foreground hover:bg-surface-overlay inline-flex items-center gap-1.5">
-              <AlertTriangle className="h-3.5 w-3.5" /> Challenge Asset
-            </button>
+            <ChallengeAssetDialog asset={asset} />
             <button
               disabled={allocBlocked}
               onClick={() => navigate(`/allocate/${asset.id}`)}

@@ -60,3 +60,30 @@ export function useSubmitValidation() {
   };
   return { submit, isPending };
 }
+
+// TruthRegistry.challengeAttestation(assetId, { stake, rationale, counterScore, evidence })
+export interface ChallengePayload {
+  stake: number;
+  rationale: string;
+  counterScore: number;
+  evidence: string[];
+}
+
+export function useChallengeAsset() {
+  const [isPending, setPending] = useState(false);
+  const [txHash, setTxHash] = useState<string | null>(null);
+  const challenge = async (_assetId: string, _payload: ChallengePayload) => {
+    setPending(true);
+    setTxHash(null);
+    await new Promise((r) => setTimeout(r, 1100));
+    const hash =
+      "0x" +
+      Math.random().toString(16).slice(2, 10) +
+      "…" +
+      Math.random().toString(16).slice(2, 6);
+    setTxHash(hash);
+    setPending(false);
+    return { hash };
+  };
+  return { challenge, isPending, txHash };
+}

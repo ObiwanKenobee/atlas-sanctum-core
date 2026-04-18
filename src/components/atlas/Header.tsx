@@ -1,7 +1,8 @@
 import { NavLink } from "@/components/NavLink";
 import { useSystemIntegrity } from "@/lib/atlas/hooks";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { WalletButton } from "./WalletButton";
 
 const NAV = [
   { to: "/", label: "Dashboard", end: true },
@@ -11,7 +12,6 @@ const NAV = [
 
 export function Header() {
   const { data: sis, isLoading } = useSystemIntegrity();
-  const [connected, setConnected] = useState(false);
 
   return (
     <header className="border-b border-border bg-background/80 backdrop-blur sticky top-0 z-40">
@@ -43,25 +43,19 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-sm border border-border bg-surface" title="System Integrity Score — aggregate health of registry, oracle, and consensus.">
+          <Link
+            to="/sis"
+            className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-sm border border-border bg-surface hover:bg-surface-elevated transition-colors"
+            title="System Integrity Score — aggregate health of registry, oracle, and consensus. Click for breakdown."
+          >
             <span className="label-eyebrow">SIS</span>
             <span className={cn("metric text-sm font-semibold", isLoading ? "text-muted-foreground" : "text-truth")}>
               {isLoading ? "··" : sis}
             </span>
             <span className="h-1.5 w-1.5 rounded-full bg-truth animate-pulse" />
-          </div>
+          </Link>
 
-          <button
-            onClick={() => setConnected((c) => !c)}
-            className={cn(
-              "px-3 py-1.5 text-[12px] rounded-sm border transition-colors",
-              connected
-                ? "border-truth/40 bg-truth-muted text-truth"
-                : "border-border-strong bg-surface-elevated text-foreground hover:bg-surface-overlay"
-            )}
-          >
-            {connected ? "0x7a91…f3c2" : "Connect Wallet"}
-          </button>
+          <WalletButton />
         </div>
       </div>
     </header>
