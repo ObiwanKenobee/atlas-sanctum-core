@@ -9,6 +9,7 @@ import AssetPage from "./pages/AssetPage.tsx";
 import AllocatePage from "./pages/AllocatePage.tsx";
 import ValidatePage from "./pages/ValidatePage.tsx";
 import PortfolioPage from "./pages/PortfolioPage.tsx";
+import SISPage from "./pages/SISPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/allocate/:id" element={<AllocatePage />} />
           <Route path="/validate" element={<ValidatePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/sis" element={<SISPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
